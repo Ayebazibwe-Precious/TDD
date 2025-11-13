@@ -32,9 +32,9 @@ describe("Utility module - matchers checklist", () => {
     });
 
     test("toEqual - FAILING example (different name)", () => {
-      const u = utils.createUser("Alice", 30);
+      const u = utils.createUser("Precious", 30);
       expect(u).toEqual({
-        name: "Bob", 
+        name: "Mary", 
         age: 30,
         createdAt: new Date("2020-01-01T00:00:00.000Z"),
       });
@@ -67,8 +67,8 @@ describe("Utility module - matchers checklist", () => {
     });
 
     test("combine .not with toMatch", () => {
-      const u = utils.createUser("Carol", 25);
-      expect(u.name).not.toMatch(/Bob/);
+      const u = utils.createUser("Treasure", 25);
+      expect(u.name).not.toMatch(/Keren/);
     });
   });
 
@@ -136,15 +136,15 @@ describe("Utility module - matchers checklist", () => {
   // 5. String matchers
   describe("String matchers", () => {
     test("toMatch - JSON contains name", () => {
-      const u = utils.createUser("Eve", 22);
+      const u = utils.createUser("Sam", 22);
       const s = JSON.stringify(u);
-      expect(s).toMatch(/"name":"Eve"/);
+      expect(s).toMatch(/"name":"Sam"/);
     });
 
     test("not.toMatch - FAILING example (will fail because it does match)", () => {
-      const u = utils.createUser("Frank", 18);
+      const u = utils.createUser("Pream", 18);
       const s = JSON.stringify(u);
-      expect(s).not.toMatch(/Frank/);
+      expect(s).not.toMatch(/Pream/);
     });
   });
   // 6. Arrays / Iterables (toContain)
