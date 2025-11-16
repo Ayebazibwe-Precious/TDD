@@ -1,27 +1,27 @@
-// function borrowBook(book_title, available_books) {
-//   if (typeof(book_title) !== "string") {
-//     return "Book name should always be a string";
-//   }
+function borrowBook(book_title, available_books) {
+  if (typeof(book_title) !== "string") {
+    return "Book name should always be a string";
+  }
 
-//   if (typeof(available_books) !== "object") {
-//     return "Available books should always be an array";
-//   }
+  if (typeof(available_books) !== "object") {
+    return "Available books should always be an array";
+  }
 
-//   if (available_books.includes(book_title)) {
-//     const index = available_books.indexOf(book_title);
-//     available_books.splice(index, 1);
+  if (available_books.includes(book_title)) {
+    const index = available_books.indexOf(book_title);
+    available_books.splice(index, 1);
 
-//     const message = `You have borrowed '${book_title}'.`;
-//     const remaining = `Available books: [${available_books.join(", ")}]`;
-//     console.log(`${message} ${remaining}`);
+    const message = `You have borrowed '${book_title}'.`;
+    const remaining = `Available books: [${available_books.join(", ")}]`;
+    console.log(`${message} ${remaining}`);
 
-//     return message;
-//   } else {
-//     const message = `Sorry, '${book_title}' is not available.`;
-//     console.log(`${message} Available books: [${available_books.join(", ")}]`);
+    return message;
+  } else {
+    const message = `Sorry, '${book_title}' is not available.`;
+    console.log(`${message} Available books: [${available_books.join(", ")}]`);
 
-//     return message;
-//   }
-// }
+    return message;
+  }
+}
 
-// module.exports = borrowBook;
+module.exports = borrowBook;
