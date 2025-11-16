@@ -1,4 +1,4 @@
-const PaymentProcessor = require("./payment");
+const PaymentProcessor = require("./payment-refactored");
 
 describe("PaymentProcessor", () => {
   let apiClient;
@@ -90,7 +90,7 @@ describe("PaymentProcessor", () => {
       0
     );
 
-    expect(tx.finalAmount).toBe(100 * processor.currencyConversionRate);
+    expect(tx.finalAmount).toBe(100 * processor.rates.conversion);
   });
 
   // 4. FRAUD CHECKS
