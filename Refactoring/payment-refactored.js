@@ -14,6 +14,10 @@ class PaymentProcessor {
     };
   }
 
+  get currencyConversionRate() {
+    return this.rates.conversion;
+  }
+
   processPayment(amount, currency, userId, method, metadata, discount, fraud) {
     // 1. Validate metadata
     this._validate(method, metadata);
@@ -71,7 +75,6 @@ class PaymentProcessor {
     validators[method]();
   }
 
-  
   // FRAUD CHECKING
   _runFraudCheck(level, userId, amount) {
     if (level <= 0) return;
@@ -99,9 +102,8 @@ class PaymentProcessor {
     }
   }
 
-
   // DISCOUNTS & CONVERSION
-  
+
   _applyDiscount(amount, code) {
     if (!code) return amount;
     return this.discounts[code]?.(amount) ?? amount;
@@ -112,9 +114,8 @@ class PaymentProcessor {
     return amount * this.rates.conversion;
   }
 
-  
   // TRANSACTION CREATION
-  
+
   _createTransaction({
     amount,
     finalAmount,
@@ -138,9 +139,8 @@ class PaymentProcessor {
     };
   }
 
-  
   // API CALL
-  
+
   _sendToApi(method, transaction) {
     const endpoints = {
       credit_card: "/payments/credit",
@@ -150,9 +150,8 @@ class PaymentProcessor {
     return this.apiClient.post(endpoints[method], transaction);
   }
 
- 
   // EMAIL + ANALYTICS
-  
+
   _sendConfirmationEmail(userId, amount, currency) {
     console.log(
       `Sending email to user ${userId}: Your payment of ${amount} ${currency} was successful.`
@@ -163,9 +162,8 @@ class PaymentProcessor {
     console.log("Analytics event:", data);
   }
 
-  
   // REFUNDS
-  
+
   refundPayment(transactionId, userId, reason, amount, currency, metadata) {
     const refundFeeRate = 0.05;
 

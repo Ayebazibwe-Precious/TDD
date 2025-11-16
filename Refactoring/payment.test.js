@@ -90,7 +90,7 @@ describe("PaymentProcessor", () => {
       0
     );
 
-    expect(tx.finalAmount).toBe(100 * processor.rates.conversion);
+    expect(tx.finalAmount).toBe(100 * processor.currencyConversionRate);
   });
 
   // 4. FRAUD CHECKS
